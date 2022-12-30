@@ -6,6 +6,7 @@ Provides the [1] missing [`dbg!`](https://doc.rust-lang.org/std/macro.dbg.html) 
 
 ```
 use gdbg::dbg;
+use gstd::{debug, msg, prelude::*};
 
 #[no_mangle]
 extern "C" fn init(){
