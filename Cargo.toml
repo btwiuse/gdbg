@@ -6,6 +6,9 @@ license = "MIT"
 description = "gear dbg! macro"
 repository = "https://github.com/btwiuse/gdbg"
 
+[lib]
+path = "lib.rs"
+
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
