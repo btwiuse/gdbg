@@ -5,8 +5,11 @@ use gstd::prelude::String;
 
 #[no_mangle]
 extern "C" fn init() {
-    let payload = String::from_utf8(gstd::msg::load_bytes().expect("Failed to load a message"))
-        .expect("Invalid init message");
+    dbg!(gstd::msg::source());
+    let payload = dbg!(String::from_utf8(
+        dbg!(gstd::msg::load_bytes()).expect("Failed to load a message")
+    ))
+    .expect("Invalid init message");
     dbg!(&payload);
 }
 
@@ -21,7 +24,7 @@ mod tests {
 
         let program = Program::current(&system);
 
-        let res = program.send_bytes(42, "Let's start");
+        let res = program.send_bytes(42, "INIT");
         assert!(res.log().is_empty());
     }
 }
