@@ -1,10 +1,16 @@
 # gdbg
 
-Provides the [1] missing [`dbg!`](https://doc.rust-lang.org/std/macro.dbg.html) macro for Gear smart contracts.
+Provides the [1] missing [`dbg!`](https://doc.rust-lang.org/std/macro.dbg.html)
+macro for Gear smart contracts.
+
+You can see the debug messages when running the program using the `gtest` crate.
+To see these messages when executing the program on the node, you should run the
+node with the `RUST_LOG="gwasm=debug"` environment variable.
 
 ## Example
 
 [examples/example/lib.rs](examples/example/lib.rs)
+
 ```
 #![no_std]
 
