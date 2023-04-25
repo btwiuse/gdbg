@@ -1,11 +1,3 @@
-# gdbg
-
-Provides the [1] missing [`dbg!`](https://doc.rust-lang.org/std/macro.dbg.html) macro for Gear smart contracts.
-
-## Example
-
-[examples/example/lib.rs](examples/example/lib.rs)
-```
 #![no_std]
 
 use gdbg::dbg;
@@ -33,19 +25,3 @@ mod tests {
         assert!(res.log().is_empty());
     }
 }
-```
-
-run `cargo test`
-
-```
-...
-[DEBUG tests::it_works] [/home/btwiuse/gdbg/examples/example/lib.rs:10] &payload = "Let's start"
-test tests::it_works ... ok
-...
-```
-
-## References
-
-- [1] https://docs.gear.rs/gstd/prelude/index.html#macros
-
-<!-- cargo publish --no-verify --allow-dirty -->
