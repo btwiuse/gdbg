@@ -1,9 +1,9 @@
 [package]
 name = "gdbg"
-version = "0.0.2"
+version = "0.1.0"
 edition = "2021"
 license = "MIT"
-description = "gear dbg! macro"
+description = "compact dbg! macro for gear smart contracts"
 repository = "https://github.com/btwiuse/gdbg"
 
 [lib]
