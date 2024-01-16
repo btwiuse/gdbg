@@ -21,7 +21,7 @@ macro_rules! dbg {
             // of temporaries - https://stackoverflow.com/a/48732525/1063961
             match $val {
                 tmp => {
-                    gstd::debug!("[{}:{}] {} = {:#?}",
+                    gstd::debug!("[{}:{}] {} = {:?}",
                         gstd::prelude::file!(),
                         gstd::prelude::line!(),
                         gstd::prelude::stringify!($val),
