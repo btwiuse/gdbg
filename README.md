@@ -1,15 +1,23 @@
 # gdbg
 
 Provides the [1] missing [`dbg!`](https://doc.rust-lang.org/std/macro.dbg.html)
-macro for Gear smart contracts.
+macro for Gear smart contracts and std.
+
+It implements compact version of dbg! proposed in
+https://github.com/rust-lang/rust/issues/82778 using `{:?}` instead of `{:#?}`
 
 You can see the debug messages when running the program using the `gtest` crate.
 To see these messages when executing the program on the node, you should run the
 node with the `RUST_LOG="gwasm=debug"` environment variable.
 
-## Example
+## Example Contract (no_std)
 
-[examples/example/lib.rs](examples/example/lib.rs)
+```
+[dependeicies]
+gdbg = { version = "0.1" }
+```
+
+[examples/example-contract/lib.rs](examples/example-contract/lib.rs)
 
 ```
 #![no_std]
@@ -55,6 +63,41 @@ running 1 test
 [DEBUG tests::it_works] [/home/navigaid/gdbg/examples/example/lib.rs:11] &payload = "INIT"                                                                                    
 test tests::it_works ... ok
 ...
+```
+
+## Example Binary (std)
+
+```
+[dependeicies]
+gdbg = { version = "0.1", features = ["std"] }
+```
+
+[examples/example-lib/main.rs](examples/example-lib/main.rs)
+
+
+```
+fn main() {
+    dbg!(add(2, 2));
+
+    std::dbg!(add(2, 2));
+
+    // gdbg::dbg is more compact than std::dbg
+    dbg!(Point { x: 2, y: 2 });
+
+    std::dbg!(Point { x: 2, y: 2 });
+}
+```
+
+run `cargo r`
+
+```
+[examples/example-lib/main.rs:20] add(2, 2) = 4                                // gdbg::dbg
+[examples/example-lib/main.rs:22] add(2, 2) = 4                                // std::dbg
+[examples/example-lib/main.rs:25] Point { x: 2, y: 2 } = Point { x: 2, y: 2 }  // gdbg::dbg
+[examples/example-lib/main.rs:27] Point { x: 2, y: 2 } = Point {               // std::dbg
+    x: 2,
+    y: 2,
+}
 ```
 
 ## References
