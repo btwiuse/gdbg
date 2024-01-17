@@ -1,9 +1,9 @@
 [package]
 name = "gdbg"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 license = "MIT"
-description = "compact dbg! macro for gear smart contracts"
+description = "compact dbg! macro for gear smart contracts and std"
 repository = "https://github.com/btwiuse/gdbg"
 
 [lib]
@@ -13,7 +13,10 @@ path = "lib.rs"
 
 [dependencies]
 
+[features]
+std = []
+
 [workspace]
 members = [
-  "examples/example",
+  "examples/*",
 ]

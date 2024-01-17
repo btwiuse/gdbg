@@ -1,7 +1,7 @@
 #![doc = include_str!(concat!(env!("CARGO_MANIFEST_DIR"), "/README.md"))]
+#![cfg_attr(not(feature = "std"), no_std)]
 
-#![no_std]
-
+#[cfg(not(feature = "std"))]
 #[macro_export]
 macro_rules! dbg {
     // NOTE: We cannot use `concat!` to make a static string as a format argument
@@ -29,6 +29,30 @@ macro_rules! dbg {
                     tmp
                 }
             }
+        }
+    };
+    ($($val:expr),+ $(,)?) => {
+        ($(dbg!($val)),+,)
+    };
+}
+
+#[cfg(feature = "std")]
+#[macro_export]
+macro_rules! dbg {
+    // std implementation
+    () => {
+        {
+            eprintln!("[{}:{}]", file!(), line!());
+        }
+    };
+    ($val:expr $(,)?) => {
+        {
+            eprintln!("[{}:{}] {} = {:?}",
+                file!(),
+                line!(),
+                stringify!($val),
+                &$val);
+            $val
         }
     };
     ($($val:expr),+ $(,)?) => {
