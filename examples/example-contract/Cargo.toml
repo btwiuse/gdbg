@@ -9,11 +9,11 @@ edition = "2021"
 path = "lib.rs"
 
 [dependencies]
-gstd = { git = "https://github.com/gear-tech/gear.git", features = ["debug"] }
+gstd = { version = "1", features = ["debug"] }
 gdbg = { path = "../.." }
 
 [dev-dependencies]
-gtest = { git = "https://github.com/gear-tech/gear.git" }
+gtest = { version = "1" }
 
 [build-dependencies]
-gear-wasm-builder = { git = "https://github.com/gear-tech/gear.git" }
+gear-wasm-builder = { version = "1" }

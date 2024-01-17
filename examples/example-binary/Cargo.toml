@@ -1,5 +1,5 @@
 [package]
-name = "example-lib"
+name = "example-binary"
 version = "0.1.0"
 edition = "2021"
 
@@ -14,6 +14,3 @@ name = "example-bin"
 
 [dependencies]
 gdbg = { path = "../..", features = ["std"] }
-
-[profile.dev]
-args = ["--", "--show-output"]

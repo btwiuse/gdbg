@@ -24,6 +24,6 @@ mod tests {
 
         let program = Program::current(&system);
 
-        let res = program.send_bytes(42, "INIT");
+        let _res = program.send_bytes(42, "INIT");
     }
 }

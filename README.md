@@ -1,10 +1,9 @@
 # gdbg
 
-Provides the [1] missing [`dbg!`](https://doc.rust-lang.org/std/macro.dbg.html)
-macro for Gear smart contracts and std.
+Provides the [1] compact version of [`dbg!`](https://doc.rust-lang.org/std/macro.dbg.html)
+macro for [2] gstd and std.
 
-It implements compact version of dbg! proposed in
-https://github.com/rust-lang/rust/issues/82778 using `{:?}` instead of `{:#?}`
+Unlike `std::dbg`, `gdbg::dbg` uses `{:?}` as formatting which is more compact than `{:#?}`
 
 You can see the debug messages when running the program using the `gtest` crate.
 To see these messages when executing the program on the node, you should run the
@@ -14,6 +13,7 @@ node with the `RUST_LOG="gwasm=debug"` environment variable.
 
 ```
 [dependeicies]
+gstd = { version = "1", features = ["debug"] }
 gdbg = { version = "0.1" }
 ```
 
@@ -72,17 +72,17 @@ test tests::it_works ... ok
 gdbg = { version = "0.1", features = ["std"] }
 ```
 
-[examples/example-lib/main.rs](examples/example-lib/main.rs)
+[examples/example-binary/main.rs](examples/example-binary/main.rs)
 
 
 ```
 fn main() {
-    dbg!(add(2, 2));
+    gdbg::dbg!(add(2, 2));
 
     std::dbg!(add(2, 2));
 
-    // gdbg::dbg is more compact than std::dbg
-    dbg!(Point { x: 2, y: 2 });
+    // gdbg::dbg prints more compact result than std::dbg
+    gdbg::dbg!(Point { x: 2, y: 2 });
 
     std::dbg!(Point { x: 2, y: 2 });
 }
@@ -102,6 +102,7 @@ run `cargo r`
 
 ## References
 
-- [1] https://docs.gear.rs/gstd/prelude/index.html#macros
+- [1] https://github.com/rust-lang/rust/issues/82778 
+- [2] https://docs.gear.rs/gstd/prelude/index.html#macros
 
 <!-- cargo publish --no-verify --allow-dirty -->

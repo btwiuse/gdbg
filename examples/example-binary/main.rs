@@ -1,5 +1,5 @@
 use example_lib::add;
-use gdbg::dbg;
+use gdbg;
 use std::fmt;
 
 struct Point {
@@ -17,12 +17,12 @@ impl fmt::Debug for Point {
 }
 
 fn main() {
-    dbg!(add(2, 2));
+    gdbg::dbg!(add(2, 2));
 
     std::dbg!(add(2, 2));
 
     // gdbg::dbg is more compact than std::dbg
-    dbg!(Point { x: 2, y: 2 });
+    gdbg::dbg!(Point { x: 2, y: 2 });
 
     std::dbg!(Point { x: 2, y: 2 });
 }
