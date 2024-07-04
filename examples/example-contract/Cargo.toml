@@ -9,7 +9,7 @@ edition = "2021"
 path = "lib.rs"
 
 [dependencies]
-gstd = { version = "1", features = ["debug"] }
+gstd = { version = "1" }
 gdbg = { path = "../.." }
 
 [dev-dependencies]

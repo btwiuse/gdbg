@@ -3,8 +3,13 @@
 use gdbg::dbg;
 use gstd::prelude::String;
 
+fn add(left: u32, right: u32) -> u32 {
+    left + right
+}
+
 #[no_mangle]
 extern "C" fn init() {
+    add(dbg!(2), 2);
     dbg!(gstd::msg::source());
     let payload = dbg!(String::from_utf8(
         dbg!(gstd::msg::load_bytes()).expect("Failed to load a message")

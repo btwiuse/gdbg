@@ -1,4 +1,4 @@
-use example_lib::add;
+use example_binary::add;
 use gdbg;
 use std::fmt;
 
