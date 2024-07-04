@@ -3,10 +3,6 @@
 use gdbg::dbg;
 use gstd::prelude::String;
 
-fn add(left: u32, right: u32) -> u32 {
-    left + right
-}
-
 #[no_mangle]
 extern "C" fn init() {
     add(dbg!(2), 2);
@@ -16,6 +12,10 @@ extern "C" fn init() {
     ))
     .expect("Invalid init message");
     dbg!(&payload);
+}
+
+fn add(left: u32, right: u32) -> u32 {
+    left + right
 }
 
 #[cfg(test)]

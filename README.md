@@ -13,7 +13,7 @@ node with the `RUST_LOG="gwasm=debug"` environment variable.
 
 ```
 [dependeicies]
-gstd = { version = "1", features = ["debug"] }
+gstd = { version = "1" }
 gdbg = { version = "0.1" }
 ```
 
@@ -33,6 +33,10 @@ extern "C" fn init() {
     ))
     .expect("Invalid init message");
     dbg!(&payload);
+}
+
+fn add(left: u32, right: u32) -> u32 {
+    left + right
 }
 
 #[cfg(test)]
@@ -57,7 +61,8 @@ run `cargo test`
 ```
 ...
 running 1 test
-[DEBUG tests::it_works] [/home/navigaid/gdbg/examples/example/lib.rs:8] gstd::msg::source() = ActorId([ 42, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ])
+[DEBUG tests::it_works] [/home/navigaid/gdbg/examples/example/lib.rs:7] 2 = 2
+[DEBUG tests::it_works] [/home/navigaid/gdbg/examples/example/lib.rs:8] gstd::msg::source() = 0x2a00000000000000000000000000000000000000000000000000000000000000
 [DEBUG tests::it_works] [/home/navigaid/gdbg/examples/example/lib.rs:9] gstd::msg::load_bytes() = Ok([ 73, 78, 73, 84 ])
 [DEBUG tests::it_works] [/home/navigaid/gdbg/examples/example/lib.rs:9] String::from_utf8(dbg!(gstd::msg::load_bytes()).expect("Failed to load a message")) = Ok("INIT")
 [DEBUG tests::it_works] [/home/navigaid/gdbg/examples/example/lib.rs:11] &payload = "INIT"                                                                                    
